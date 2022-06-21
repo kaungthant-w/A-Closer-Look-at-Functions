@@ -44,17 +44,17 @@ console.log(lufthansa);
 
 
 const erowings = {
-    name : "Eurowings",
+    airline : "Eurowings",
     iataCode : "HW",
     bookings : []
 }
 
-const bookew = lufthansa.book;
-bookew.call(erowings, 23, "Sarah Willims");
+const book = lufthansa.book;
+book.call(erowings, 23, "Sarah Willims");
 console.log(erowings);
 
 // call method
-bookew.call(erowings, 532,"Mary");
+book.call(erowings, 532,"Mary");
 console.log(erowings);
 
 
@@ -64,13 +64,47 @@ const swiss = {
     bookings : []
 };
 
-bookew.call(swiss, 595, "Mary Copper");
+book.call(swiss, 595, "Mary Copper");
 console.log(swiss);
 
 
 // Apply Method
 const flightData = [593, 'GeorageCooper'];
-bookew.apply(swiss, flightData);
+book.apply(swiss, flightData);
 console.log(swiss);
 
-bookew.call(swiss, ...flightData);
+book.call(swiss, ...flightData);
+
+//bind method
+const bookEW = book.bind(erowings);
+bookEW(23, "Steven Willims");
+
+const booksw = book.bind(swiss);
+booksw(3232,"Steven swiden");
+
+const booksh = {
+    airline : "swiss air lines",
+    iataCode : "SW",
+    bookings : []
+}
+
+bookSH = book.bind(booksh);
+bookSH (331, "Shron Elan");
+
+
+const bookEW45 = book.bind(erowings, 45);
+bookEW45("Steven Alone");
+bookEW45("Along Mine");
+
+
+// with event listeners
+lufthansa.planes = 35;
+lufthansa.buyPlane = function() {
+    console.log(this);
+    this.planes++;
+    console.log(this.planes);
+}
+
+
+
+
